@@ -14,7 +14,7 @@ function App() {
       <Header />
       <main id="site-content">
         <Routes>
-          <Route path="/" element={<Dashboard/>} />
+          <Route path="/dashboard/*" element={<Dashboard/>} />
           <Route path="/details" element={<Details/>} />
           <Route path="/edit" element={<Edit/>} />
           <Route path="/login" element={<Login/>} />

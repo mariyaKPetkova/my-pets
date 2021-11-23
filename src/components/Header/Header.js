@@ -4,7 +4,7 @@ const Header = () => {
         <header id="site-header">
             <nav className="navbar">
                 <section className="navbar-dashboard">
-                    <Link to="/">Dashboard</Link>
+                    <Link to="/dashboard">Dashboard</Link>
                     <div id="guest">
                         <Link className="button" to="/login">Login</Link>
                         <Link className="button" to="/register">Register</Link>
