@@ -8,6 +8,7 @@ import Edit from './components/Edit/Edit.js'
 import Login from './components/Login/Login.js'
 import MyPets from './components/MyPets/MyPets.js'
 import Register from './components/Register/Register.js'
+
 function App() {
   return (
     <div id="container">
@@ -15,12 +16,12 @@ function App() {
       <main id="site-content">
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard/>} />
-          <Route path="/details" element={<Details/>} />
           <Route path="/edit" element={<Edit/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/my-pets" element={<MyPets/>} />
           <Route path="/create" element={<Create/>} />
+          <Route path="/details/:petId" element={<Details/>} />
         </Routes>
 
       </main>

@@ -8,5 +8,10 @@ export const getAll = async () => {
     const result = Object.values(pets)
 
     console.log(result);
-    return result; 
+    return result;
 };
+export const getOne = async (id) => {
+    const response = await fetch(`${baseUrl}/pets/${id}`)
+    const pet = await response.json();
+    return pet
+}
