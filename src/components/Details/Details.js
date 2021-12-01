@@ -1,18 +1,26 @@
 import { useContext } from 'react'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import * as petService from '../../services/petService.js'
 import { AuthContext } from '../../contexts/AuthContext.js'
 
 const Details = () => {
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext)
     const [pet, setPet] = useState({})
     const { petId } = useParams()
     useEffect(async () => {
         const result = await petService.getOne(petId)
         setPet(result)
+        
     }, [])
-
+    const onDelete = (e)=>{
+       e.preventDefault() 
+       petService.del(petId,user.accessToken)
+       .then(()=>{
+        navigate('/dashboard')
+    })
+    }
     return (
         <section id="details-page" className="details">
             <div className="pet-information">
@@ -34,7 +42,7 @@ const Details = () => {
                         user._id && (user._id === pet._ownerId
                             ? (<>
                                 <a className="button" href="#">Edit</a>
-                                <a className="button" href="#">Delete</a>
+                                <a className="button" href="#" onClick={onDelete}>Delete</a>
                             </>)
                             : <a className="button" href="#">Like</a>
                         )}
