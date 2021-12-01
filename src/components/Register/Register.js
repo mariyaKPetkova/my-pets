@@ -1,7 +1,28 @@
+import { useNavigate } from 'react-router';
+import {useContext} from 'react'
+import * as authService from '../../services/authService'
+import {AuthContext} from '../../contexts/AuthContext.js'
 const Register = () => {
+    const navigate = useNavigate()
+    const {login} = useContext(AuthContext)
+    const onRegister = (e)=>{
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const email = formData.get('email')
+        const password = formData.get('password')
+        const repeatPassword = formData.get('confirm-pass')
+        //const { email, password} = Object.fromEntries(new FormData(e.currentTarget));
+        
+        authService.register(email,password)
+        .then(authData=>{
+            login(authService)
+            navigate('/dashboard')
+        })
+
+    }
     return(
         <section id="register-page" className="register">
-            <form id="register-form" action="" method="">
+            <form id="register-form" onSubmit={onRegister} method="POST">
                 <fieldset>
                     <legend>Register Form</legend>
                     <p className="field">
