@@ -9,6 +9,7 @@ import Edit from './components/Edit/Edit.js'
 import Login from './components/Login/Login.js'
 import MyPets from './components/MyPets/MyPets.js'
 import Register from './components/Register/Register.js'
+import Logout from './components/Logout/Logout.js'
 import { useState } from 'react';
 
 function App() {
@@ -17,9 +18,8 @@ function App() {
     email:'',
     accessToken:'',
   })
-  const onLogg = (authData) => {
-    console.log('onLogg:');
-    console.log( authData);
+  const login = (authData) => {
+    
     setUser(authData);
   }
 
@@ -27,14 +27,15 @@ function App() {
   //   setUser(initialAuthState);
   // };
   return (
-    <AuthContext.Provider value={true}>
+    <AuthContext.Provider value={{user,login}}>
     <div id="container">
-      <Header email={user.email}/>
+      <Header />
       <main id="site-content">
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard/>} />
           <Route path="/edit" element={<Edit/>} />
-          <Route path="/login" element={<Login onLogg={onLogg}/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register/>} />
           <Route path="/my-pets" element={<MyPets/>} />
           <Route path="/create" element={<Create/>} />

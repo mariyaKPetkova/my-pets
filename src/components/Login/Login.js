@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import {useContext} from 'react'
 import * as authService from '../../services/authService'
-
-const Login = ({onLogg}) => {
+import {AuthContext} from '../../contexts/AuthContext.js'
+const Login = () => {
+    const {login} =useContext(AuthContext)
     const navigate = useNavigate()
     const onLogin = (e)=>{
         e.preventDefault();
@@ -13,7 +15,7 @@ const Login = ({onLogg}) => {
     .then((data)=>{
         console.log('then')
         //console.log(data);
-        onLogg(data)
+        login(data)
         navigate('/dashboard')
        
     })
