@@ -11,15 +11,14 @@ import MyPets from './components/MyPets/MyPets.js'
 import Register from './components/Register/Register.js'
 import Logout from './components/Logout/Logout.js'
 import { useState } from 'react';
-
+import useLocalStorage from './hooks/useLocalStorage.js'
 function App() {
-  const [user,setUser]= useState({
+  const [user,setUser]= useLocalStorage('user',{
     _id:'',
     email:'',
     accessToken:'',
   })
   const login = (authData) => {
-    
     setUser(authData);
   }
 
