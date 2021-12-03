@@ -12,21 +12,22 @@ import Register from './components/Register/Register.js'
 import Logout from './components/Logout/Logout.js'
 import { useState } from 'react';
 import useLocalStorage from './hooks/useLocalStorage.js'
+const initAuthState = {
+  _id:'',
+  email:'',
+  accessToken:'',
+}
 function App() {
-  const [user,setUser]= useLocalStorage('user',{
-    _id:'',
-    email:'',
-    accessToken:'',
-  })
+  const [user,setUser]= useLocalStorage('user',initAuthState)
   const login = (authData) => {
     setUser(authData);
   }
 
-  // const logout = () => {
-  //   setUser(initialAuthState);
-  // };
+  const logout = () => {
+    setUser(initAuthState);
+  };
   return (
-    <AuthContext.Provider value={{user,login}}>
+    <AuthContext.Provider value={{user,login,logout}}>
     <div id="container">
       <Header />
       <main id="site-content">

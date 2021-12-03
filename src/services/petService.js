@@ -37,3 +37,17 @@ export const del = (petId, token) => {
         }
     }).then(res => res.json());
 }
+// export const edit = async (petData, token) => {
+//     const response = await fetch(`${baseUrl}/pets`, {
+//          method: 'POST',
+//          headers: {
+//              'content-type': 'application/json',
+//              'X-Authorization': token,
+//          },
+//          body: JSON.stringify(petData)
+//      });
+ 
+//      const result = await response.json();
+ 
+//      return result;
+//  };
