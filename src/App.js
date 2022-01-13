@@ -33,7 +33,7 @@ function App() {
       <main id="site-content">
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard/>} />
-          <Route path="/edit" element={<Edit/>} />
+          <Route path="/edit/:petId" element={<Edit/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register/>} />

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import * as petService from '../../services/petService.js'
 import { AuthContext } from '../../contexts/AuthContext.js'
 
@@ -41,7 +41,7 @@ const Details = () => {
                     {
                         user._id && (user._id === pet._ownerId
                             ? (<>
-                                <a className="button" href="#">Edit</a>
+                                <Link className="button" to={`/edit/${petId}`}>Edit</Link>
                                 <a className="button" href="#" onClick={onDelete}>Delete</a>
                             </>)
                             : <a className="button" href="#">Like</a>
