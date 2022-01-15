@@ -12,6 +12,7 @@ import Register from './components/Register/Register.js'
 import Logout from './components/Logout/Logout.js'
 import { useState } from 'react';
 import useLocalStorage from './hooks/useLocalStorage.js'
+
 const initAuthState = {
   _id:'',
   email:'',

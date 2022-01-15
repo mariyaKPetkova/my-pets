@@ -15,7 +15,7 @@ const Register = () => {
         
         authService.register(email,password)
         .then(authData=>{
-            login(authService)
+            login(authData)
             navigate('/dashboard')
         })
 

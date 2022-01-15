@@ -7,8 +7,19 @@ export const getAll = async () => {
 
     const result = Object.values(pets)
 
-    console.log(result);
     return result;
+};
+export const search = async (searched) => {
+    console.log(searched)
+    const response = await fetch(`${baseUrl}/pets`)
+
+    const pets = await response.json();
+
+   const result = Object.values(pets)
+   //search by name or type:
+    const res = Object.values(pets).filter(x=> x.name === searched || x.type === searched)
+   console.log(res)
+    return res;
 };
 export const getOne = async (id) => {
     const response = await fetch(`${baseUrl}/pets/${id}`)
