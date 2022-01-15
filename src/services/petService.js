@@ -9,6 +9,16 @@ export const getAll = async () => {
 
     return result;
 };
+
+export const getMyPets = async (userId) => {
+    const response = await fetch(`${baseUrl}/pets`)
+
+    const pets = await response.json();
+
+    const result = Object.values(pets).filter(x => x._ownerId == userId)
+    console.log(result);
+    return result;
+};
 export const search = async (searched) => {
     console.log(searched)
     const response = await fetch(`${baseUrl}/pets`)
